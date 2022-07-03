@@ -1,0 +1,641 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0", 
+        "title": "My User Project CRUD",
+        "description": "My User Project Application API",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Metrics",
+            "description": "API for metrics app"
+        }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/authentication": {
+            "get": {
+                "tags": ["Users Route"],
+                "summary": "Get all users in system",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                ]
+            }
+        },
+        "/authentication/signup": {
+            "post": {
+                "tags": ["Users Route"],
+                "description": "Allow users to register as a new members \n email: [type: string ],  \n password: [type: string ],  \n firstName: [type: string ],  \n lastName: [type: string ],  \n number: [type: string ]",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "Return a json responses",
+                        "type": "array"
+                    }
+                ]
+            }
+        },
+        "/authentication/signin": {
+            "post": {
+                "tags": ["Users Route"],
+                "description": "Allow users to connect as a members informations \n email: [type: string ],  \n password: [type: string ],",
+                "responses": {
+                    "200": {
+                        "description": "Return a json responses",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "User that we want to create",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/authentication/{id}": {
+            "delete": {
+                "tags": ["Users Route"],
+                "description": "Allow user to login a account in system",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "produces": ["application/json"],
+                "parameters": [
+                    
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID of user that we want to find",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                ]
+            }
+        },
+        "/authentication/{id}": {
+            "put": {
+                "tags": ["Users Route"],
+                "description": "Allow Admin to delete a account in system",
+                "responses": {
+                    "200": {
+                        "description": "Return json file",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "produces": ["application/json"],
+                "parameters": [
+                    
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID of user that we want to find",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                ]
+            }
+        },
+        "/authentication/validtoken": {
+            "post": {
+                "tags": ["Users Route"],
+                "description": "Allow Admin to get a user account in system",
+                "responses": {
+                    "200": {
+                        "description": "Return json file",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                ]
+            }
+        },
+        "/authentication/subscription/{id}/{name}": {
+            "put": {
+                "tags": ["Users Route"],
+                "description": "Allow Admin to get a user account in system",
+                "responses": {
+                    "200": {
+                        "description": "Return json file",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID of user that we want to find",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "description": "Name you want to update",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/authentication/follow": {
+            "post": {
+                "tags": ["Users Route"],
+                "description": "Allow users to connect as a members informations \n id: [type: string ],  \n idStation: [type: string ]",
+                "responses": {
+                    "200": {
+                        "description": "Return a json responses",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    },
+                    {
+                        "name": "params",
+                        "in": "body",
+                        "required": true,
+                        "description": "id and idStation of user that we want to find",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/authentication/unfollow": {
+            "post": {
+                "tags": ["Users Route"],
+                "description": "Allow users to connect as a members informations \n id: [type: string ],  \n idStation: [type: string ],",
+                "responses": {
+                    "200": {
+                        "description": "Return a json responses",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    },
+                    {
+                        "name": "params",
+                        "in": "body",
+                        "required": true,
+                        "description": "id and idStation of user that we want to find",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/stations": {
+            "get": {
+                "tags": ["Stations Route"],
+                "description": "Get all stations in system",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                ]
+            }
+        },
+        "/stations/register": {
+            "post": {
+                "tags": ["Stations Route"],
+                "description": "Allow users to register as a new stations \n name: [type: string ],  \n identificator: [type: string ],  \n longitude: [type: string ],  \n latitude: [type: string ],  \n altitude: [type: string ], \n userId: [type: string ], \n number: [type: integer ]",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                ]
+            }
+        },
+        "/stations/{id}": {
+            "put": {
+                "tags": ["Stations Route"],
+                "description": "Allow users to register as a new stations \n name: [type: string ],  \n identificator: [type: string ],  \n longitude: [type: string ],  \n latitude: [type: string ],  \n altitude: [type: string ], \n rating: [type: string ], \n number: [type: integer ]",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id to find",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    },
+                    {
+                        "name": "params",
+                        "in": "body",
+                        "description": "Stations params to update",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                ]
+            }
+        },
+        "/stations/{id}": {
+            "delete": {
+                "tags": ["Stations Route"],
+                "description": "Allow users to delete as a stations ",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id to delete",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                ]
+            }
+        },
+        "/stations/infos/{identificator}": {
+            "post": {
+                "tags": ["Stations Route"],
+                "description": "Allow users to Update stations values \n values: \n [ \n type: array,  \n temperature: [type: string ],  \n windSpeed: [type: string ],  \n humidity: [type: string ],  \n dateDeMesure: [type: string ] \n ]",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    },
+                    {
+                        "name": "identificator",
+                        "in": "path",
+                        "description": "stations parameters",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    },
+                    {
+                        "name": "params",
+                        "in": "body",
+                        "description": "Stations params",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                ]
+            }
+        },
+        "/checkout/paypal": {
+            "post": {
+                "tags": ["Payment Route"],
+                "description": "Manage payment methods",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                ]
+            }
+        },
+        "/checkout/success": {
+            "get": {
+                "tags": ["Payment Route"],
+                "description": "Manage payment methods",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    },
+                    {
+                        "name": "payerId",
+                        "in": "path",
+                        "description": "ID of the client",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    },
+                    {
+                        "name": "paymentId",
+                        "in": "path",
+                        "description": "ID of the payment operations",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                ]
+            }
+        },
+        "/checkout/cancel": {
+            "get": {
+                "tags": ["Payment Route"],
+                "description": "Manage payment methods",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User token to validate",
+                        "schema": {
+                            "$ref": "#/"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "Users": {
+            "required": ["email", "password", "firstName", "lastName", "number", "roles", "stationSuivie"],
+            "properties": {
+                "_id": {
+                    "type": "integer",
+                    "uniqueItems": true
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "string"
+                },
+                "roles": {
+                    "type": "string",
+                    "default": "user",
+                    "enum": ["user", "premium", "owner", "superAdmin"]
+                },
+                "stationSuivie": {
+                    "type": "array",
+                    "unique": true,
+                    "idStation": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Stations": {
+            "required": ["name", "userId", "identificator", "longitude", "latitude", "altitude", "rating", "values"],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                },
+                "identificator": {
+                    "type": "string"
+                },
+                "longitude": {
+                    "type": "string"
+                },
+                "latitude": {
+                    "type": "string"
+                },
+                "altitude": {
+                    "type": "string"
+                },
+                "rating": {
+                    "type":"string"
+                },
+                "values": {
+                    "type": "array",
+                    "unique": true,
+                    "temperature": {
+                        "type": "String"
+                    },
+                    "windSpeed":{
+                        "type": "String"
+                    },
+                    "humidity":{
+                        "type": "String"
+                    },
+                    "dateDeMesure":{
+                        "type": "String"
+                    }
+                }
+            }
+        },
+        "Pricing": {
+            "required": ["name", "userId", "price", "paymentID", "payerId"],
+            "properties": {
+                "_id": {
+                    "type": "integer",
+                    "uniqueItems": true
+                },
+                "name": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "paymentID": {
+                    "type": "string"
+                },
+                "payerId": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
